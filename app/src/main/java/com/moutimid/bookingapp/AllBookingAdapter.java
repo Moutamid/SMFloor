@@ -88,6 +88,7 @@ public class AllBookingAdapter extends RecyclerView.Adapter<AllBookingAdapter.Pr
         if (bookingModels.get(position).isBooked() && bookingModels.get(position).isSeated()) {
             holder.booked.setChecked(true);
             holder.seated.setChecked(true);
+
             holder.PrContainer.setBackgroundColor(Color.parseColor("#8BC34A"));
         } else if (!bookingModels.get(position).isBooked() && bookingModels.get(position).isSeated()) {
             holder.booked.setChecked(false);

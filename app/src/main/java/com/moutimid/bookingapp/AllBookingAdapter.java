@@ -84,6 +84,7 @@ public class AllBookingAdapter extends RecyclerView.Adapter<AllBookingAdapter.Pr
             }
         });
 
+
         if (bookingModels.get(position).isBooked() && bookingModels.get(position).isSeated()) {
             holder.booked.setChecked(true);
             holder.seated.setChecked(true);

@@ -79,7 +79,6 @@ public class AllBookingActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 lodingbar.dismiss();
-
             }
         });
 

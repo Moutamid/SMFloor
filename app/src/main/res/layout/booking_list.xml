@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/PrContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginEnd="15dp"
+    android:background="@drawable/roundbutton"
+    android:elevation="2dp"
+    android:padding="15sp">
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="24dp"
+        android:tint="@color/white"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/delete" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Time"
+        android:textColor="#fff"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Name"
+
+        android:textColor="#fff"
+        android:textSize="11dp" />
+
+    <TextView
+        android:id="@+id/contact_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginTop="5dp"
+
+        android:fontFamily="@font/kanit_regular"
+        android:text="Contact No: ********"
+        android:textColor="#fff"
+        android:textSize="11dp" />
+
+    <TextView
+        android:id="@+id/buzzer_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contact_number"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Buzzer Number"
+        android:textColor="#fff"
+        android:textSize="11dp" />
+
+    <TextView
+        android:id="@+id/number_of_guests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buzzer_number"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Number of guests"
+        android:textColor="#fff"
+        android:textSize="11dp" />
+
+    <CheckBox
+        android:id="@+id/booked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/number_of_guests"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:buttonTint="@color/white"
+        android:fontFamily="@font/kanit_regular"
+        android:text="table ready"
+        android:textColor="#fff"
+        android:textSize="15dp" />
+
+    <CheckBox
+        android:id="@+id/seated"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/booked"
+        android:buttonTint="@color/white"
+        android:fontFamily="@font/kanit_regular"
+        android:text="Seated"
+        android:textColor="#fff"
+        android:textSize="15dp" />
+</RelativeLayout>

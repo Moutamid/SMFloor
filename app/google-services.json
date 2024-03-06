@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "258717241369",
+    "project_id": "sm-gapps",
+    "storage_bucket": "sm-gapps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258717241369:android:b73d3710c621fd851a9a88",
+        "android_client_info": {
+          "package_name": "com.moutamid.bookingadminapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9pornhLRlZxJVtWLMp_MjpIu4Ecvd5JI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258717241369:android:67abed822f11a7df1a9a88",
+        "android_client_info": {
+          "package_name": "com.moutamid.bookingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9pornhLRlZxJVtWLMp_MjpIu4Ecvd5JI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

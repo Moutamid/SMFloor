@@ -34,7 +34,7 @@ public class AllBookingActivity extends AppCompatActivity {
 
 
     private RecyclerView ProductsRecycler;
-    private AllBookingAdapter adapter;
+    private com.moutimid.bookingapp.AllBookingAdapter adapter;
     private List<BookingModel> adminProducts;
     private DatabaseReference mDataBaseRef;
     private ProgressBar bar;
@@ -53,7 +53,7 @@ public class AllBookingActivity extends AppCompatActivity {
         lodingbar.show();
         mDataBaseRef = FirebaseDatabase.getInstance().getReference().child("BookingApp").child("Details");
         adminProducts = new ArrayList<>();
-        adapter = new AllBookingAdapter(getApplicationContext(), adminProducts);
+        adapter = new com.moutimid.bookingapp.AllBookingAdapter(getApplicationContext(), adminProducts);
         ProductsRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         ProductsRecycler.setAdapter(adapter);
         mDataBaseRef.addValueEventListener(new ValueEventListener() {
@@ -82,7 +82,23 @@ public class AllBookingActivity extends AppCompatActivity {
             }
         });
 
-
+        adapter.setOnItemClickListener(new com.moutimid.bookingapp.AllBookingAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(int pos) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(AllBookingActivity.this).setTitle("Confirmation").setMessage("Are You Sure You Want To Delete ?!").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DatabaseReference reference = mDataBaseRef.child(adminProducts.get(pos).getKey());
+                        reference.removeValue();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                }).setIcon(android.R.drawable.ic_dialog_alert);
+                dialog.show();
+            }
+        });
 
     }
     @Override

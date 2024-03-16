@@ -82,7 +82,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:buttonTint="@color/white"
         android:fontFamily="@font/kanit_regular"
-        android:text="table ready"
+        android:text="Table ready"
         android:textColor="#fff"
         android:textSize="15dp" />
 

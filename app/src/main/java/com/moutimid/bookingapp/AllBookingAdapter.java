@@ -16,12 +16,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moutamid.bookingadminapp.R;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 public class AllBookingAdapter extends RecyclerView.Adapter<AllBookingAdapter.ProductViewHolder> {
@@ -115,34 +116,62 @@ public class AllBookingAdapter extends RecyclerView.Adapter<AllBookingAdapter.Pr
         holder.booked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                HashMap<String, Object> updatedData = new HashMap<>();
-                if(b)
-             {
-                 updatedData.put("booked", true);
+                if (b) {
+                    is_booked = true;
+                    BookingModel booking = new BookingModel(bookingModels.get(position).getKey(), bookingModels.get(position).getTime(), bookingModels.get(position).getName(), bookingModels.get(position).getContact_no(), bookingModels.get(position).getBuzzer_no(), bookingModels.get(position).getNo_of_guest(), is_booked, is_seated);
+                    myRef.child(bookingModels.get(position).getKey()).setValue(booking).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                notifyDataSetChanged();
+                            }
+                        }
+                    });
+                } else {
+                    is_booked = false;
+                    BookingModel booking = new BookingModel(bookingModels.get(position).getKey(), bookingModels.get(position).getTime(), bookingModels.get(position).getName(), bookingModels.get(position).getContact_no(), bookingModels.get(position).getBuzzer_no(), bookingModels.get(position).getNo_of_guest(), is_booked, is_seated);
+                    myRef.child(bookingModels.get(position).getKey()).setValue(booking).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                notifyDataSetChanged();
 
-             }
-             else
-             {
-                 updatedData.put("booked", false);
-             }
-                myRef.child(bookingModels.get(position).getKey()).updateChildren(updatedData);
+                            }
+
+                        }
+                    });
+                }
             }
         });
         holder.seated.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                HashMap<String, Object> updatedData = new HashMap<>();
-                if(b)
-                {
-                    updatedData.put("seated", true);
+                if (b) {
+                    is_seated = true;
+                    BookingModel booking = new BookingModel(bookingModels.get(position).getKey(), bookingModels.get(position).getTime(), bookingModels.get(position).getName(), bookingModels.get(position).getContact_no(), bookingModels.get(position).getBuzzer_no(), bookingModels.get(position).getNo_of_guest(), is_booked, is_seated);
+                    myRef.child(bookingModels.get(position).getKey()).setValue(booking).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                notifyDataSetChanged();
 
-                }
-                else
-                {
-                    updatedData.put("seated", false);
-                }
-                myRef.child(bookingModels.get(position).getKey()).updateChildren(updatedData);
+                            }
 
+                        }
+                    });
+                } else {
+                    is_seated = false;
+                    BookingModel booking = new BookingModel(bookingModels.get(position).getKey(), bookingModels.get(position).getTime(), bookingModels.get(position).getName(), bookingModels.get(position).getContact_no(), bookingModels.get(position).getBuzzer_no(), bookingModels.get(position).getNo_of_guest(), is_booked, is_seated);
+                    myRef.child(bookingModels.get(position).getKey()).setValue(booking).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                notifyDataSetChanged();
+                            }
+
+                        }
+                    });
+                }
             }
         });
         holder.contact_no.setOnTouchListener(new View.OnTouchListener() {
@@ -154,6 +183,7 @@ public class AllBookingAdapter extends RecyclerView.Adapter<AllBookingAdapter.Pr
                 return false;
             }
         });
+
     }
 
     @Override

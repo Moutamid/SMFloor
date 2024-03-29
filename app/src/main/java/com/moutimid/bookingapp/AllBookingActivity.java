@@ -38,7 +38,6 @@ public class AllBookingActivity extends AppCompatActivity {
     private List<BookingModel> adminProducts;
     private DatabaseReference mDataBaseRef;
     private ProgressBar bar;
-    private static final int EDIT_DETAILS_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +59,7 @@ public class AllBookingActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 adminProducts.clear();
-                for (DataSnapshot snapshot1 : snapshot.getChildren())
-                {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     adminProducts.add(new BookingModel(snapshot1.getKey(),
                             snapshot1.child("time").getValue(String.class),
                             snapshot1.child("name").getValue(String.class),
@@ -101,18 +99,4 @@ public class AllBookingActivity extends AppCompatActivity {
         });
 
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == EDIT_DETAILS_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            // Refresh the RecyclerView to reflect the changes made in EditDetailsActivity
-            adapter.notifyDataSetChanged();
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    adapter.notifyDataSetChanged();}
-
 }
